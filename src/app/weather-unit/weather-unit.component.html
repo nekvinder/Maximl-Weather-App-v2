@@ -15,7 +15,14 @@
         <h3 class="badge badge-light" *ngIf="iserror && city.length>0">
           Please enter a correct city name and retry
         </h3>
-        <h3><input class="locationtext" type="submit" value="Get Report" /></h3>
+        <br />
+        <h3>
+          <input
+            class="locationtext btn btn-danger"
+            type="submit"
+            value="Get Report"
+          />
+        </h3>
       </form>
     </div>
     <div class="wrapper" *ngIf="data">
@@ -28,7 +35,7 @@
 
         <a href="javascript:;"><span class="temp-type">&deg;C</span></a>
       </p>
-      <button (click)="edit()" class="btn btn-info">Change City</button>
+      <button (click)="edit()" class="btn btn-warning">Edit City</button>
     </div>
   </div>
 </div>

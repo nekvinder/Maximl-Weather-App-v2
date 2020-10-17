@@ -39,6 +39,7 @@ export class WeatherUnitComponent implements OnInit {
 
   edit() {
     this.city = "";
+    localStorage.removeItem("data" + this.id);
     this.data = null;
   }
 
