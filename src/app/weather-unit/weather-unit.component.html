@@ -1,0 +1,24 @@
+<div class="weather-card one">
+	<div class="top" [style.backgroundImage]="'url('+ imagedata +')'">
+		<div class="wrapper" *ngIf="!data">
+			<form (submit)="getReport()">
+				<h1 class="heading">Enter a city to get its weather report</h1>
+				<h6><input class="locationtext" type="text" [(ngModel)]="city" required name="cityname" ></h6>
+					<h3 class="badge badge-light" *ngIf="iserror && city.length>0">Please enter a correct city name and
+						retry</h3>
+					<h3><input class="locationtext" type="submit" value="Get Report" ></h3>
+			</form>
+		</div>
+		<div class="wrapper" *ngIf="data">
+			<h1 class="heading">{{data['weather'][0]['main'] }}</h1>
+			<h3 class="location">{{data['name']}}</h3>
+			<p class="temp">
+				<span class="temp-value">{{data['main']['temp']-273.15 | number:'1.2-2' }}</span>
+				<span class="deg">0</span>
+				<a href="javascript:;"><span class="temp-type">C</span></a>
+			</p>
+			<button (click)="edit()" class="btn btn-info">Change City</button>
+		</div>
+	</div>
+
+</div>

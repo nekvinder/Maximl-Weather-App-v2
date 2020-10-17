@@ -1,0 +1,7 @@
+<div class="container-fluid">
+  <div *ngFor="let i of ['1','2','3']" class="row">
+    <div *ngFor="let j of ['1','2','3']" class="col">
+      <app-weather-unit [id]="i+j"></app-weather-unit>
+    </div>
+  </div>
+</div>
