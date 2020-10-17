@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnDestroy, OnInit } from "@angular/core";
+import { interval, Subscription } from "rxjs";
+
 import { WeatherService } from "../weather.service";
 
 @Component({
@@ -7,13 +9,14 @@ import { WeatherService } from "../weather.service";
   styleUrls: ["./weather-unit.component.css"]
 })
 export class WeatherUnitComponent implements OnInit {
-  constructor(private weatherService: WeatherService) {}
-
   @Input() id;
   city = "";
   iserror: boolean = false;
   data: any;
   imagedata = "";
+
+  constructor(private weatherService: WeatherService) {}
+
   loadData() {
     if (this.city.length > 0) {
       this.weatherService
@@ -24,10 +27,12 @@ export class WeatherUnitComponent implements OnInit {
           this.imagedata = this.weatherService.getImageUrl(
             t["weather"][0]["id"]
           );
+          localStorage.setItem("data" + this.id, JSON.stringify(t));
           console.log(t);
         })
         .catch(e => {
           this.iserror = true;
+          console.log(e);
         });
     }
   }
@@ -37,12 +42,14 @@ export class WeatherUnitComponent implements OnInit {
     this.data = null;
   }
 
-  getReport() {
-    this.loadData();
-  }
-
   ngOnInit() {
-    this.loadData();
-    alert(this.id);
+    setInterval(() => {
+      this.loadData();
+    }, 30000);
+    let tmp = JSON.parse(localStorage.getItem("data" + this.id));
+    if (tmp) {
+      this.data = tmp;
+      this.imagedata = this.weatherService.getImageUrl(tmp["weather"][0]["id"]);
+    }
   }
 }

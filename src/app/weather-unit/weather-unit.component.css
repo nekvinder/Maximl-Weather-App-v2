@@ -40,29 +40,29 @@
 }
 .weather-card .top .wrapper .heading {
   margin-top: 20px;
-  font-size: 35px;
+  font-size: 25px;
   font-weight: 400;
   color: #fff;
 }
 .weather-card .top .wrapper .location {
   margin-top: 20px;
-  font-size: 21px;
+  font-size: 15px;
   font-weight: 400;
   color: #fff;
 }
 .weather-card .top .wrapper .temp {
-  margin-top: 20px;
+  margin-top: 5px;
 }
 .weather-card .top .wrapper .temp a {
   text-decoration: none;
   color: #fff;
 }
 .weather-card .top .wrapper .temp a .temp-type {
-  font-size: 85px;
+  font-size: 25px;
 }
 .weather-card .top .wrapper .temp .temp-value {
   display: inline-block;
-  font-size: 85px;
+  font-size: 25px;
   font-weight: 600;
   color: #fff;
 }
